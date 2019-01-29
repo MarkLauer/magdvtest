@@ -28,6 +28,7 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'bundle.js'
   },
+  devtool: "inline-source-map",
   devServer: {
     contentBase: path.join(__dirname, 'public/'),
     port: 3000,
