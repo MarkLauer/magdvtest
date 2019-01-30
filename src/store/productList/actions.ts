@@ -8,4 +8,4 @@ const receiveProducts = (products: Product[]) => ({
 });
 
 export const fetchProducts = () => (dispatch: Dispatch) =>
-    getProducts((products: Product[]) => dispatch(receiveProducts(products)));
+    getProducts().then(products => dispatch(receiveProducts(products)));
