@@ -7,16 +7,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.([jt])sx?$/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/env']
-        },
-        exclude: /node_modules/
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
       }
     ]
   },
@@ -33,7 +34,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'public/'),
     port: 3000,
     publicPath: 'http://localhost:3000/dist/',
-    hotOnly: true
+    hot: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 };

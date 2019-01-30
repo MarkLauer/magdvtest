@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { hot } from 'react-hot-loader/root';
+
 import { connect } from 'react-redux';
 
 import { AppState } from './store';
@@ -14,7 +16,6 @@ import { setFilter } from './store/filter/actions';
 
 import { SystemState } from './store/system/types';
 import { updateSession } from './store/system/actions';
-
 
 interface AppProps {
     productList: ProductListState;
@@ -54,4 +55,9 @@ const mapDispatchToProps = () => ({
     updateSession
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default hot(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(App)
+);
