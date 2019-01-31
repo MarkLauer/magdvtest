@@ -1,1 +1,189 @@
-[]
+[
+    {
+        "id": 546,
+        "name": "Вафли мягкие с вишнёвым джемом",
+        "image": "",
+        "price": 8.3,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Мягкие",
+        "flavor": "Вишня"
+    },
+    {
+        "id": 548,
+        "name": "Вафли мягкие с варёной сгущёнкой",
+        "image": "",
+        "price": 0,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Мягкие",
+        "flavor": "Сгущёное молоко"
+    },
+    {
+        "id": 574,
+        "name": "Вафли «Ореховые»",
+        "image": "",
+        "price": 49,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Классические",
+        "flavor": "Орех"
+    },
+    {
+        "id": 576,
+        "name": "Вафли с варёной сгущёнкой",
+        "image": "",
+        "price": 49,
+        "isNew": false,
+        "isHit": true,
+        "category": "Вафли фасованные",
+        "kind": "Классические",
+        "flavor": "Сгущёное молоко"
+    },
+    {
+        "id": 578,
+        "name": "Вафли «С халвой»",
+        "image": "",
+        "price": 49,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Классические",
+        "flavor": "Халва"
+    },
+    {
+        "id": 580,
+        "name": "Вафли «Сливочные»",
+        "image": "",
+        "price": 49,
+        "isNew": true,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Классические",
+        "flavor": "Сливки"
+    },
+    {
+        "id": 582,
+        "name": "Вафли «Шоколадные»",
+        "image": "",
+        "price": 49,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Классические",
+        "flavor": "Шоколад"
+    },
+    {
+        "id": 663,
+        "name": "Вафли мягкие с шоколадным кремом",
+        "image": "",
+        "price": 24.2,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Мягкие",
+        "flavor": "Шоколад"
+    },
+    {
+        "id": 459,
+        "name": "Вафли «Лимон-Лайм»",
+        "image": "",
+        "price": 49,
+        "isNew": true,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Классические",
+        "flavor": "Лимон-лайм"
+    },
+    {
+        "id": 706,
+        "name": "Вафли «Твист»",
+        "image": "",
+        "price": 35.6,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Классические",
+        "flavor": "Шоколад"
+    },
+    {
+        "id": 720,
+        "name": "Вафли «Zебра» «Глазированные»",
+        "image": "",
+        "price": 226.8,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Глазированные",
+        "flavor": "Какао"
+    },
+    {
+        "id": 457,
+        "name": "Вафли «Глазированные с орешками»",
+        "image": "",
+        "price": 35.7,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Глазированные",
+        "flavor": "Орех"
+    },
+    {
+        "id": 31,
+        "name": "Вафли «Голландские» с карамельной начинкой",
+        "image": "",
+        "price": 26,
+        "isNew": false,
+        "isHit": true,
+        "category": "Вафли фасованные",
+        "kind": "Голландские",
+        "flavor": "Карамель"
+    },
+    {
+        "id": 725,
+        "name": "Вафельный сэндвич с шоколадной начинкой",
+        "image": "",
+        "price": 194,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли весовые",
+        "kind": "Сэндвич",
+        "flavor": "Шоколад"
+    },
+    {
+        "id": 767,
+        "name": "Вафли с воздушной кукурузой",
+        "image": "",
+        "price": 244.7,
+        "isNew": false,
+        "isHit": true,
+        "category": "Вафли весовые",
+        "kind": "Глазированные",
+        "flavor": "Кукуруза"
+    },
+    {
+        "id": 759,
+        "name": "Вафли «Шоколайт»",
+        "image": "",
+        "price": 180.3,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли весовые",
+        "kind": "Сэндвич",
+        "flavor": "Шоколад"
+    },
+    {
+        "id": 801,
+        "name": "Рулетики вафельные со вкусом сгущённого молока",
+        "image": "",
+        "price": 62.9,
+        "isNew": false,
+        "isHit": false,
+        "category": "Вафли фасованные",
+        "kind": "Рулетики",
+        "flavor": "Сгущёное молоко"
+    }
+]
