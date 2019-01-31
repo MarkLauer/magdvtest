@@ -11,6 +11,7 @@ import { addToCart } from '../store/shoppingCart/actions';
 
 import ProductList from '../components/ProductList';
 import ProductCard from '../components/ProductCard';
+import FilterContainer from './FilterContainer';
 
 interface Props {
     products: Product[];
@@ -27,15 +28,20 @@ class ProductListContainer extends React.Component<Props> {
         const { products, dispatch } = this.props;
 
         return (
-            <ProductList>
-                {products.map(product => (
-                    <ProductCard
-                        key={product.id}
-                        product={product}
-                        onAddToCartClick={() => dispatch(addToCart(product.id))}
-                    />
-                ))}
-            </ProductList>
+            <div>
+                <FilterContainer />
+                <ProductList>
+                    {products.map(product => (
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            onAddToCartClick={() =>
+                                dispatch(addToCart(product.id))
+                            }
+                        />
+                    ))}
+                </ProductList>
+            </div>
         );
     }
 }
@@ -43,21 +49,21 @@ class ProductListContainer extends React.Component<Props> {
 const getVisibleProducts = (products: Product[], filter: FilterState) => {
     let visibleProducts = [...products];
 
-    if (filter.category.length > 0) {
-        visibleProducts = visibleProducts.filter(
-            product => filter.category.includes(product.category)
+    if (filter.categories.length > 0) {
+        visibleProducts = visibleProducts.filter(product =>
+            filter.categories.includes(product.category)
         );
     }
 
-    if (filter.kind.length > 0) {
-        visibleProducts = visibleProducts.filter(
-            product => filter.kind.includes(product.kind)
+    if (filter.kinds.length > 0) {
+        visibleProducts = visibleProducts.filter(product =>
+            filter.kinds.includes(product.kind)
         );
     }
 
-    if (filter.flavor.length > 0) {
-        visibleProducts = visibleProducts.filter(
-            product => filter.flavor.includes(product.flavor)
+    if (filter.flavors.length > 0) {
+        visibleProducts = visibleProducts.filter(product =>
+            filter.flavors.includes(product.flavor)
         );
     }
 
