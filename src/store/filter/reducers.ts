@@ -7,9 +7,9 @@ import {
 } from './types';
 
 const initialState: FilterState = {
-    category: '',
-    kind: '',
-    flavor: '',
+    category: [],
+    kind: [],
+    flavor: [],
     order: Order.Position,
     view: View.Tile
 };

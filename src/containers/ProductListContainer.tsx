@@ -43,21 +43,21 @@ class ProductListContainer extends React.Component<Props> {
 const getVisibleProducts = (products: Product[], filter: FilterState) => {
     let visibleProducts = [...products];
 
-    if (filter.category) {
+    if (filter.category.length > 0) {
         visibleProducts = visibleProducts.filter(
-            product => product.category === filter.category
+            product => filter.category.includes(product.category)
         );
     }
 
-    if (filter.kind) {
+    if (filter.kind.length > 0) {
         visibleProducts = visibleProducts.filter(
-            product => product.kind === filter.kind
+            product => filter.kind.includes(product.kind)
         );
     }
 
-    if (filter.flavor) {
+    if (filter.flavor.length > 0) {
         visibleProducts = visibleProducts.filter(
-            product => product.flavor === filter.flavor
+            product => filter.flavor.includes(product.flavor)
         );
     }
 

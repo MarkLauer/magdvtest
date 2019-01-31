@@ -1,7 +1,7 @@
 export interface FilterState {
-    category: string;
-    kind: string;
-    flavor: string;
+    category: string[];
+    kind: string[];
+    flavor: string[];
     order: Order;
     view: View;
 }
