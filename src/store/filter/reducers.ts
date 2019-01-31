@@ -1,10 +1,17 @@
-import { FilterState, FilterActionTypes, Order, SET_FILTER } from './types';
+import {
+    FilterActionTypes,
+    FilterState,
+    Order,
+    SET_FILTER,
+    View
+} from './types';
 
 const initialState: FilterState = {
     category: '',
     kind: '',
     flavor: '',
-    order: Order.Position
+    order: Order.Position,
+    view: View.Tile
 };
 
 export const filterReducer = (
