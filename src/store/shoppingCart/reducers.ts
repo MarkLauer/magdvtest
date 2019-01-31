@@ -21,7 +21,7 @@ export const shoppingCartReducer = (
             }
             return {
                 ...state,
-                [action.productId]: 0
+                [action.productId]: 1
             };
         case REMOVE_FROM_CART:
             if (state[action.productId] > 1) {
