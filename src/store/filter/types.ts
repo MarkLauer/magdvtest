@@ -1,7 +1,7 @@
 export interface FilterState {
-    category: string[];
-    kind: string[];
-    flavor: string[];
+    categories: string[];
+    kinds: string[];
+    flavors: string[];
     order: Order;
     view: View;
 }
@@ -16,11 +16,40 @@ export enum View {
     Tile = 'TILE'
 }
 
-export const SET_FILTER = 'SET_FILTER';
+export const SET_CATEGORY_FILTER = 'SET_CATEGORY_FILTER';
+export const SET_KIND_FILTER = 'SET_KIND_FILTER';
+export const SET_FLAVOR_FILTER = 'SET_FLAVOR_FILTER';
+export const SET_ORDER_FILTER = 'SET_ORDER_FILTER';
+export const SET_VIEW_FILTER = 'SET_VIEW_FILTER';
 
-interface SetFilterAction {
-    type: typeof SET_FILTER;
-    payload: FilterState;
+interface SetCategoryFilterAction {
+    type: typeof SET_CATEGORY_FILTER;
+    category: string;
 }
 
-export type FilterActionTypes = SetFilterAction;
+interface SetKindFilterAction {
+    type: typeof SET_KIND_FILTER;
+    kind: string;
+}
+
+interface SetFlavorFilterAction {
+    type: typeof SET_FLAVOR_FILTER;
+    flavor: string;
+}
+
+interface SetOrderFilterAction {
+    type: typeof SET_ORDER_FILTER;
+    order: Order;
+}
+
+interface SetViewFilterAction {
+    type: typeof SET_VIEW_FILTER;
+    view: View;
+}
+
+export type FilterActionTypes =
+    | SetCategoryFilterAction
+    | SetKindFilterAction
+    | SetFlavorFilterAction
+    | SetOrderFilterAction
+    | SetViewFilterAction;
