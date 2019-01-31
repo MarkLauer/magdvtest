@@ -1,9 +1,11 @@
 export interface Product {
     id: number;
     name: string;
+    image: string;
     price: number;
     oldPrice?: number;
-    tags: Tag[];
+    isNew: boolean;
+    isHit: boolean;
     category: string;
     kind: string;
     flavor: string;
@@ -11,12 +13,6 @@ export interface Product {
 
 export interface ProductListState {
     products: Product[];
-}
-
-export enum Tag {
-    New = 'NEW',
-    Hit = 'HIT',
-    Weight = 'WEIGHT'
 }
 
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
