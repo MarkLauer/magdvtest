@@ -8,13 +8,17 @@ class Header extends React.Component {
         sticky: false
     };
 
-    handleScroll = () => this.setState({ sticky: window.scrollY > 64 });
+    handleScroll = () => {
+        this.setState({ sticky: window.pageYOffset > 96 });
+    };
 
     componentDidMount(): void {
         window.addEventListener('scroll', this.handleScroll);
     }
 
     render(): React.ReactNode {
+        const { sticky } = this.state;
+
         return (
             <header className="header">
                 <div className="header__outer header__part">
@@ -34,59 +38,74 @@ class Header extends React.Component {
                         Выход
                     </a>
                 </div>
-                <div className="header__main header__part">
-                    <i className="fas fa-bars header__main-menu-icon" />
-                    <div className="header__main-left">
-                        <div className="header__main-left-logo header__main-flex-item-top" />
-                        <div className="header__main-left-catalog header__main-flex-item-bottom">
-                            <div className="header__main-left-catalog-button">
-                                <i className="fas fa-th-large" />
-                                Каталог
-                                <i className="fas fa-angle-down" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="header__main-center">
-                        <div className="header__main-center-top header__main-flex-item-top">
-                            <a href="" className="header__main-center-top-link">
-                                <i className="fas fa-star header__main-center-top-icon" />
+                <div
+                    className={`header__main header__part${
+                        sticky ? ' header__main_sticky' : ''
+                    }`}
+                >
+                    <div
+                        className={`header__main-top${
+                            sticky ? ' header__main-top_sticky' : ''
+                        }`}
+                    >
+                        <i className="fas fa-bars header__main-top-menu-icon" />
+                        <div className="header__main-top-logo" />
+                        <div className="header__main-top-info">
+                            <a href="" className="header__main-top-info-link">
+                                <i className="fas fa-star header__main-top-info-icon" />
                                 Новинки
                             </a>
-                            <a href="" className="header__main-center-top-link">
-                                <i className="fas fa-tag header__main-center-top-icon" />
+                            <a href="" className="header__main-top-info-link">
+                                <i className="fas fa-tag header__main-top-info-icon" />
                                 Хиты продаж
                             </a>
-                            <div className="header__main-center-top-support">
-                                <i className="fas fa-phone header__main-center-top-icon" />
-                                <span className="header__main-center-top-support-wrapper">
-                                    <p className="header__main-center-top-support-caption">
+                            <div className="header__main-top-info-support">
+                                <i className="fas fa-phone header__main-top-info-icon" />
+                                <span className="header__main-top-info-support">
+                                    <p className="header__main-top-info-support-caption">
                                         Служба поддержки
                                     </p>
-                                    <p className="header__main-center-top-support-number">
+                                    <p className="header__main-top-info-support-number">
                                         8 800 250 5555
                                     </p>
                                 </span>
                             </div>
                         </div>
-                        <div className="header__main-center-search header__main-flex-item-bottom">
+                        <div className="header__main-top-cart">
+                            <span className="header__main-top-cart-link">
+                                Моя корзина
+                                <span className="header__main-top-cart-amount">
+                                    860
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div className="header__main-bottom">
+                        <div className="header__main-bottom-catalog">
+                            <div className="header__main-bottom-catalog-button">
+                                <i className="fas fa-th-large" />
+                                Каталог
+                                <i className="fas fa-angle-down" />
+                            </div>
+                        </div>
+                        <div className="header__main-bottom-search">
                             <input
-                                className="header__main-center-search-input"
+                                className="header__main-bottom-search-input"
                                 type="search"
                                 placeholder="Введите название товара"
                             />
-                            <button className="header__main-center-search-button">
-                                <i className="fas fa-search" />
+                            <span className="header__main-bottom-search-category">
+                                Категории{' '}
+                                <i className="fas fa-angle-down header__main-bottom-search-category-arrow" />
+                            </span>
+                            <button className="header__main-bottom-search-button">
+                                <i className="fas fa-search header__main-bottom-search-button-icon" />
+                                <span className="header__main-bottom-search-button-text">
+                                    Поиск
+                                </span>
                             </button>
                         </div>
-                    </div>
-                    <div className="header__main-right">
-                        <div className="header__main-right-cart header__main-flex-item-top">
-                            Моя корзина
-                            <span className="header__main-right-cart-amount">
-                                860
-                            </span>
-                        </div>
-                        <div className="header__main-right-cart-sum header__main-flex-item-bottom">
+                        <div className="header__main-bottom-cart">
                             53 974,10 ₽
                         </div>
                     </div>
