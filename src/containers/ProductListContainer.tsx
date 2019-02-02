@@ -28,7 +28,7 @@ class ProductListContainer extends React.Component<Props> {
         const { products, dispatch } = this.props;
 
         return (
-            <div>
+            <main>
                 <FilterContainer />
                 <ProductList>
                     {products.map(product => (
@@ -41,7 +41,7 @@ class ProductListContainer extends React.Component<Props> {
                         />
                     ))}
                 </ProductList>
-            </div>
+            </main>
         );
     }
 }
