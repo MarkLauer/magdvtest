@@ -3,7 +3,7 @@ import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 
-import App from './App';
+import App from '../components/App';
 
 interface RootProps {
     store: Store;
