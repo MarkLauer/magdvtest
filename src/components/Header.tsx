@@ -3,13 +3,18 @@ import './Header.scss';
 // @ts-ignore
 import magOnlineLogo from '../images/logo_magonline.png';
 
-class Header extends React.Component {
+interface Props {
+    cartAmount: number;
+    cartTotal: number;
+}
+
+class Header extends React.Component<Props> {
     state = {
         sticky: false
     };
 
     handleScroll = () => {
-        this.setState({ sticky: window.pageYOffset > 96 });
+        this.setState({ sticky: window.pageYOffset > 160 - 64 });
     };
 
     componentDidMount(): void {
@@ -17,6 +22,7 @@ class Header extends React.Component {
     }
 
     render(): React.ReactNode {
+        const { cartAmount, cartTotal } = this.props;
         const { sticky } = this.state;
 
         return (
@@ -52,15 +58,15 @@ class Header extends React.Component {
                         <div className="header__main-top-logo" />
                         <div className="header__main-top-info">
                             <a href="" className="header__main-top-info-link">
-                                <i className="fas fa-star header__main-top-info-icon" />
+                                <i className="fas fa-star header__main-top-info-link-icon" />
                                 Новинки
                             </a>
                             <a href="" className="header__main-top-info-link">
-                                <i className="fas fa-tag header__main-top-info-icon" />
+                                <i className="fas fa-tag header__main-top-info-link-icon" />
                                 Хиты продаж
                             </a>
                             <div className="header__main-top-info-support">
-                                <i className="fas fa-phone header__main-top-info-icon" />
+                                <i className="fas fa-phone header__main-top-info-link-icon" />
                                 <span className="header__main-top-info-support">
                                     <p className="header__main-top-info-support-caption">
                                         Служба поддержки
@@ -73,11 +79,15 @@ class Header extends React.Component {
                         </div>
                         <div className="header__main-top-cart">
                             <span className="header__main-top-cart-link">
+                                <i className="fas fa-shopping-basket header__main-top-cart-link-icon" />
                                 Моя корзина
-                                <span className="header__main-top-cart-amount">
-                                    860
-                                </span>
+                                {cartAmount > 0 && (
+                                    <span className="header__main-top-cart-amount">
+                                        {cartAmount}
+                                    </span>
+                                )}
                             </span>
+                            <i className="fas fa-chevron-circle-down header__main-top-cart-button" />
                         </div>
                     </div>
                     <div className="header__main-bottom">
@@ -105,8 +115,22 @@ class Header extends React.Component {
                                 </span>
                             </button>
                         </div>
-                        <div className="header__main-bottom-cart">
-                            53 974,10 ₽
+                        <div
+                            className={`header__main-bottom-cart${
+                                cartAmount === 0
+                                    ? ' header__main-bottom-cart_empty'
+                                    : ''
+                            }`}
+                        >
+                            <span className="header__main-bottom-cart-amount">
+                                {cartAmount
+                                    ? `${cartAmount} тов.`
+                                    : 'Корзина пока пуста'}
+                            </span>
+                            {cartTotal > 0 &&
+                                cartTotal
+                                    .toFixed(2)
+                                    .replace(/\d(?=(\d{3})+\.)/g, '$& ') + ' ₽'}
                         </div>
                     </div>
                 </div>

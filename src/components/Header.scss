@@ -125,22 +125,22 @@
           box-sizing: border-box;
         }
 
-        &-icon {
-          display: none;
-
-          @include lg {
-            display: inline;
-            padding-right: .5em;
-            font-size: 20px;
-            color: $color-primary;
-          }
-        }
-
         &-link {
           text-decoration: none;
           color: $color-white;
           font-size: 14px;
           font-weight: bold;
+
+          &-icon {
+            display: none;
+
+            @include lg {
+              display: inline;
+              padding-right: .5em;
+              font-size: 20px;
+              color: $color-primary;
+            }
+          }
         }
 
         &-support {
@@ -173,10 +173,38 @@
           color: $color-white;
         }
 
+        @include xl {
+          justify-content: space-between;
+          padding: 0 1.5em;
+          box-sizing: border-box;
+        }
+
         &-link {
           position: relative;
           font-size: 14px;
           font-weight: bold;
+
+          &-icon {
+            display: none;
+
+            @include xl {
+              display: inline;
+              font-size: 24px;
+              padding-right: .5em;
+            }
+          }
+
+        }
+
+        &-button {
+          display: none;
+
+          @include xl {
+            display: inline;
+            font-size: 24px;
+            color: $color-primary;
+            cursor: pointer;
+          }
         }
 
         &-amount {
@@ -187,6 +215,10 @@
           font-weight: normal;
           background-color: $color-primary;
           border-radius: 6px;
+
+          @include xl {
+            display: none;
+          }
         }
       }
 
@@ -304,6 +336,27 @@
         color: $color-white;
         font-size: 18px;
         font-weight: bold;
+
+        @include xl {
+          justify-content: space-between;
+          padding: 0 1.5em;
+        }
+
+        &-amount {
+          display: none;
+
+          @include xl {
+            display: inline;
+            padding: 4px 8px;
+            border: 1px solid $color-primary;
+            border-radius: 16px;
+            font-weight: normal;
+          }
+        }
+
+        &_empty {
+          justify-content: center;
+        }
       }
     }
 
