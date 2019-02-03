@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Header from './Header';
-import ProductListContainer from '../containers/ProductListContainer';
+import Main from './Main';
 import Footer from './Footer';
 import './App.scss';
+import HeaderContainer from '../containers/HeaderContainer';
 
 const App = () => (
     <div className="page">
-        <Header />
-        <ProductListContainer />
+        <HeaderContainer />
+        <Main />
         <Footer />
     </div>
 );

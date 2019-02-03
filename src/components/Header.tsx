@@ -82,7 +82,7 @@ class Header extends React.Component<Props> {
                                 <i className="fas fa-shopping-basket header__main-top-cart-link-icon" />
                                 Моя корзина
                                 {cartAmount > 0 && (
-                                    <span className="header__main-top-cart-amount">
+                                    <span className="header__main-top-cart-amount header__cart-amount">
                                         {cartAmount}
                                     </span>
                                 )}
@@ -122,15 +122,23 @@ class Header extends React.Component<Props> {
                                     : ''
                             }`}
                         >
-                            <span className="header__main-bottom-cart-amount">
+                            <span className="header__main-bottom-cart-amount-xl">
                                 {cartAmount
                                     ? `${cartAmount} тов.`
                                     : 'Корзина пока пуста'}
                             </span>
-                            {cartTotal > 0 &&
-                                cartTotal
-                                    .toFixed(2)
-                                    .replace(/\d(?=(\d{3})+\.)/g, '$& ') + ' ₽'}
+                            <span className="header__main-bottom-cart-value">
+                                {cartTotal > 0 &&
+                                    cartTotal
+                                        .toFixed(2)
+                                        .replace(/\d(?=(\d{3})+\.)/g, '$& ') +
+                                        ' ₽'}
+                                {cartAmount > 0 && sticky && (
+                                    <span className="header__main-bottom-cart-amount header__cart-amount">
+                                        {cartAmount}
+                                    </span>
+                                )}
+                            </span>
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,15 @@
 @import "colors";
 
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
 }
 
 .page {
-  font-family: sans-serif;
   background: $color-page-background;
 }

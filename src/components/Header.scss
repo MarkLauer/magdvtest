@@ -1,5 +1,5 @@
-@import "colors";
 @import "breakpoints";
+@import "colors";
 
 .header {
   height: 64px;
@@ -13,7 +13,6 @@
     flex-direction: column;
     align-items: center;
     height: 160px;
-    box-sizing: border-box;
     padding: 0 1em;
     background: $color-header-background url("../images/header-background.png");
   }
@@ -85,7 +84,6 @@
         display: flex;
         align-items: center;
         padding: 0 16px;
-        box-sizing: border-box;
         font-size: 20px;
         color: $color-white;
         cursor: pointer;
@@ -122,7 +120,6 @@
           justify-content: space-between;
           align-items: center;
           padding: 0 1em;
-          box-sizing: border-box;
         }
 
         &-link {
@@ -176,7 +173,6 @@
         @include xl {
           justify-content: space-between;
           padding: 0 1.5em;
-          box-sizing: border-box;
         }
 
         &-link {
@@ -210,11 +206,6 @@
         &-amount {
           position: absolute;
           top: -1em;
-          padding: 0 .5em;
-          font-size: 11px;
-          font-weight: normal;
-          background-color: $color-primary;
-          border-radius: 6px;
 
           @include xl {
             display: none;
@@ -240,7 +231,6 @@
       &-catalog {
         flex: 1 1 25%;
         padding: .5em 0 .5em 1em;
-        box-sizing: border-box;
 
         &-button {
           display: flex;
@@ -265,7 +255,6 @@
         display: flex;
         position: relative;
         padding: .5em 1em;
-        box-sizing: border-box;
 
         &-input {
           flex-grow: 1;
@@ -331,7 +320,6 @@
         justify-content: center;
         align-items: center;
         padding: 0 .5em;
-        box-sizing: border-box;
         background-color: $color-shopping-cart-background;
         color: $color-white;
         font-size: 18px;
@@ -343,6 +331,15 @@
         }
 
         &-amount {
+          position: absolute;
+          top: -1em;
+
+          @include xl {
+            display: none;
+          }
+        }
+
+        &-amount-xl {
           display: none;
 
           @include xl {
@@ -352,6 +349,10 @@
             border-radius: 16px;
             font-weight: normal;
           }
+        }
+
+        &-value {
+          position: relative;
         }
 
         &_empty {
@@ -373,6 +374,12 @@
       }
     }
   }
+
+  &__cart-amount {
+    padding: 0 .5em;
+    font-size: 11px;
+    font-weight: normal;
+    background-color: $color-primary;
+    border-radius: 6px;
+  }
 }
-
-
