@@ -13,7 +13,7 @@ export const shoppingCartReducer = (
 ): ShoppingCartState => {
     switch (action.type) {
         case ADD_TO_CART:
-            if (action.productId in Object.keys(state)) {
+            if (state[action.productId]) {
                 return {
                     ...state,
                     [action.productId]: state[action.productId] + 1
