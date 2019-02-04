@@ -21,6 +21,10 @@ class Header extends React.Component<Props> {
         window.addEventListener('scroll', this.handleScroll);
     }
 
+    componentWillUnmount(): void {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
     render(): React.ReactNode {
         const { cartAmount, cartTotal } = this.props;
         const { sticky } = this.state;
