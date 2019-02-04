@@ -1,21 +1,15 @@
 import {
     FilterActionTypes,
     FilterState,
-    Order,
-    View,
     SET_CATEGORY_FILTER,
     SET_KIND_FILTER,
-    SET_FLAVOR_FILTER,
-    SET_ORDER_FILTER,
-    SET_VIEW_FILTER
+    SET_FLAVOR_FILTER
 } from './types';
 
 const initialState: FilterState = {
     categories: [],
     kinds: [],
-    flavors: [],
-    order: Order.Position,
-    view: View.Tile
+    flavors: []
 };
 
 enum MultipleFilterField {
@@ -64,16 +58,6 @@ export const filterReducer = (
                 state,
                 action.flavor
             );
-        case SET_ORDER_FILTER:
-            return {
-                ...state,
-                order: action.order
-            };
-        case SET_VIEW_FILTER:
-            return {
-                ...state,
-                view: action.view
-            };
         default:
             return state;
     }
