@@ -7,11 +7,8 @@ import { Product } from '../store/productList/types';
 import { FilterState } from '../store/filter/types';
 
 import { receiveProducts } from '../store/productList/actions';
-import { addToCart } from '../store/shoppingCart/actions';
 
 import ProductList from '../components/ProductList';
-import ProductCard from '../components/ProductCard';
-import FilterContainer from './FilterContainer';
 
 interface Props {
     products: Product[];
@@ -25,24 +22,8 @@ class ProductListContainer extends React.Component<Props> {
     }
 
     render(): React.ReactNode {
-        const { products, dispatch } = this.props;
-
-        return (
-            <main>
-                <FilterContainer />
-                <ProductList>
-                    {products.map(product => (
-                        <ProductCard
-                            key={product.id}
-                            product={product}
-                            onAddToCartClick={() =>
-                                dispatch(addToCart(product.id))
-                            }
-                        />
-                    ))}
-                </ProductList>
-            </main>
-        );
+        const { products } = this.props;
+        return <ProductList products={products} />;
     }
 }
 
