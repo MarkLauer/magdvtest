@@ -1,0 +1,21 @@
+@import "breakpoints";
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+
+  @include md {
+    margin-top: 0;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    max-width: $breakpoint-xl;
+
+    @include md {
+      padding: 1em;
+    }
+  }
+}
