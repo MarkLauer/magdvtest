@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Product as ProductType } from '../store/productList/types';
+import { Product } from '../store/productList/types';
 
 interface Props {
-    product: ProductType;
-    onAddToCartClick: () => void;
+    product: Product;
+    onAddToCart: (productId: number) => any;
+    onRemoveFromCart: (productId: number) => any;
 }
 
-const ProductCard = ({ product, onAddToCartClick }: Props) => (
+const ProductCard = ({ product, onAddToCart, onRemoveFromCart }: Props) => (
     <div>
         <div>
             {product.isNew && <span>Новинка</span>}
@@ -18,9 +19,6 @@ const ProductCard = ({ product, onAddToCartClick }: Props) => (
         <div>
             <span>{product.price}</span>
             {product.oldPrice && <span>{product.oldPrice}</span>}
-            <button onClick={onAddToCartClick}>
-                Добавить в корзину
-            </button>
         </div>
     </div>
 );
