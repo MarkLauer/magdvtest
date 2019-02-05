@@ -2,6 +2,8 @@
 @import "colors";
 
 .pagination-panel {
+  display: flex;
+  width: 100%;
   padding: 1em;
   background-color: $color-white;
 
@@ -10,8 +12,6 @@
     &-button {
       width: 32px;
       height: 32px;
-      font-size: 100%;
-      font-family: inherit;
       padding: 0;
       border: 1px solid $color-border;
       border-right: 0;
@@ -31,5 +31,37 @@
         color: $color-grey;
       }
     }
+  }
+
+  &__select-wrapper {
+    position: relative;
+  }
+
+  &__select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 100%;
+    border: 1px solid $color-border;
+    padding-right: 2em;
+
+    &-arrow {
+      position: absolute;
+      top: .5em;
+      right: .5em;
+      color: $color-grey;
+      pointer-events: none;
+    }
+  }
+
+  &__order-button {
+    border: 0;
+    color: $color-grey;
+    background-color: $color-white;
+    cursor: pointer;
+  }
+
+  &__flex-filler {
+    margin: auto;
   }
 }
