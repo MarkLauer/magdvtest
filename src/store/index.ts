@@ -5,13 +5,11 @@ import { createLogger } from 'redux-logger';
 import { productListReducer } from './productList/reducers';
 import { shoppingCartReducer } from './shoppingCart/reducers';
 import { filterReducer } from './filter/reducers';
-import { systemReducer } from './system/reducers';
 
 const rootReducer = combineReducers({
     productList: productListReducer,
     shoppingCart: shoppingCartReducer,
-    filter: filterReducer,
-    system: systemReducer
+    filter: filterReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
