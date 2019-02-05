@@ -29,37 +29,74 @@ class ProductList extends React.Component<Props> {
         productsPerPage: 3,
         sort: Sort.Position,
         order: Order.Ascend,
-        view: View.List
+        view: View.Tile
     };
 
     handlePageChange = (page: number) => {
         this.setState({ currentPage: page });
     };
 
+    handleSelectChange = ({
+        currentTarget: { name, value }
+    }: React.FormEvent<HTMLSelectElement>) => {
+        this.setState({ [name]: value });
+    };
+
+    handleOrderChange = () => {
+        const { order } = this.state;
+        if (order === Order.Ascend) {
+            this.setState({ order: Order.Descend });
+        } else {
+            this.setState({ order: Order.Ascend });
+        }
+    };
+
     render(): React.ReactNode {
         const { products } = this.props;
-        const { currentPage, productsPerPage } = this.state;
+        const { currentPage, productsPerPage, sort, order, view } = this.state;
+
+        const sortedProducts = products.sort((a, b) => {
+            if (sort === Sort.Position) {
+                if (order === Order.Ascend) {
+                    return a.id - b.id;
+                } else {
+                    return b.id - a.id;
+                }
+            } else {
+                if (order === Order.Ascend) {
+                    return a.price - b.price;
+                } else {
+                    return b.price - a.price;
+                }
+            }
+        });
 
         const lastProduct = currentPage * productsPerPage;
         const firstProduct = lastProduct - productsPerPage;
-        const currentProducts = products.slice(firstProduct, lastProduct);
+        const currentProducts = sortedProducts.slice(firstProduct, lastProduct);
+
+        const paginationPanel = (
+            <PaginationPanel
+                pages={Math.ceil(sortedProducts.length / productsPerPage)}
+                currentPage={currentPage}
+                productsPerPage={productsPerPage}
+                sort={sort}
+                order={order}
+                view={view}
+                onPageChange={this.handlePageChange}
+                onSelectChange={this.handleSelectChange}
+                onOrderChange={this.handleOrderChange}
+            />
+        );
 
         return (
             <div className="product-list">
                 <div className="product-list__header">Вафли</div>
-                <PaginationPanel
-                    pages={Math.ceil(products.length / productsPerPage)}
-                    currentPage={currentPage}
-                    onPageChange={this.handlePageChange}
-                />
+                {paginationPanel}
                 {currentProducts.map(product => (
                     <ProductCardContainer key={product.id} product={product} />
                 ))}
-                <PaginationPanel
-                    pages={Math.ceil(products.length / productsPerPage)}
-                    currentPage={currentPage}
-                    onPageChange={this.handlePageChange}
-                />
+                {paginationPanel}
             </div>
         );
     }
