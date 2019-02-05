@@ -18,7 +18,7 @@
   }
 
   &__part {
-    max-width: $breakpoint-xl;
+    max-width: calc(#{$breakpoint-xl} - 2em);
     width: 100%;
   }
 
