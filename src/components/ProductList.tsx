@@ -96,6 +96,11 @@ class ProductList extends React.Component<Props> {
 
         return (
             <div className="product-list">
+                <div className="product-list__breadcrumbs">
+                    Главная{' '}
+                    <i className="fas fa-angle-right product-list__breadcrumbs_icon" />{' '}
+                    Вафли
+                </div>
                 <div className="product-list__header">Вафли</div>
                 {paginationPanel}
                 <button

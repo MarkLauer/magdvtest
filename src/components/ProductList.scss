@@ -7,6 +7,21 @@
     flex: 3 1 75%;
   }
 
+  &__breadcrumbs {
+    display: none;
+
+    @include md {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    &_icon {
+      color: $color-grey;
+      margin: 0 4px;
+    }
+  }
+
   &__header {
     padding: 16px 16px 0;
     font-size: 20px;
