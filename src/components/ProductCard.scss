@@ -9,15 +9,45 @@
   background-color: $color-white;
   border-top: 1px solid $color-border;
 
-  &:last-child {
-    margin-bottom: 16px;
-    border-bottom: 1px solid $color-border;
+  &__wrapper {
+
+    &:last-child {
+      border-bottom: 1px solid $color-border;
+    }
+
+    &_tile {
+      @include md {
+        flex: 0 1 (1 / 3 * 100%);
+        padding: 8px;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &_tile {
+
+    @include md {
+      flex-direction: column;
+      height: 384px;
+      border: 0;
+      padding: 16px;
+    }
   }
 
   &__tags-container {
     position: absolute;
     top: 0;
     left: 0;
+
+    &_tile {
+      @include md {
+        top: 16px;
+        left: 16px;
+      }
+    }
   }
 
   &__tag {
@@ -58,12 +88,19 @@
   }
 
   &__image {
-    flex: 1 1 25%;
+    width: (1 / 3 * 100%);
     object-fit: contain;
     padding: 8px;
 
     @include sm {
       padding: 0;
+    }
+
+    &_tile {
+      @include md {
+        max-height: 75%;
+        width: 100%;
+      }
     }
   }
 

@@ -26,7 +26,7 @@ interface Props {
 class ProductList extends React.Component<Props> {
     state = {
         currentPage: 1,
-        productsPerPage: 3,
+        productsPerPage: 6,
         sort: Sort.Position,
         order: Order.Ascend,
         view: View.Tile
@@ -98,12 +98,27 @@ class ProductList extends React.Component<Props> {
             <div className="product-list">
                 <div className="product-list__header">Вафли</div>
                 {paginationPanel}
-                <button className="product-list__filter-button">Фильтр</button>
-                <div>
+                <button
+                    className={`product-list__filter-button${
+                        view === View.Tile
+                            ? ' product-list__filter-button_tile'
+                            : ''
+                    }`}
+                >
+                    Фильтр
+                </button>
+                <div
+                    className={`product-list__products-container${
+                        view === View.Tile
+                            ? ' product-list__products-container_tile'
+                            : ''
+                    }`}
+                >
                     {currentProducts.map(product => (
                         <ProductCardContainer
                             key={product.id}
                             product={product}
+                            view={view}
                         />
                     ))}
                 </div>

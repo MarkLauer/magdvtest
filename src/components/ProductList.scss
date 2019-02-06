@@ -2,7 +2,7 @@
 
 .product-list {
   width: 100%;
-  
+
   @include lg {
     flex: 3 1 75%;
   }
@@ -36,6 +36,34 @@
 
     @include lg {
       display: none;
+    }
+
+    &_tile {
+      @include md {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  &__products-container {
+    margin-bottom: 16px;
+
+    @include lg {
+      margin-top: 16px;
+    }
+
+    &_tile {
+      @include md {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+        margin-left: -8px;
+        margin-right: -8px;
+      }
+
+      @include lg {
+        margin-top: 8px;
+      }
     }
   }
 }
