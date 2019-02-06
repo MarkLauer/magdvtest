@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Order, Sort, View} from './ProductList';
 import './PaginationPanel.scss';
+import './utils.scss';
 
 interface Props {
     pages: number;
@@ -73,7 +74,7 @@ const PaginationPanel = ({
                 </select>
                 <i className="fas fa-angle-down pagination-panel__select-arrow" />
             </div>
-            <div className="pagination-panel__flex-filler" />
+            <div className="flex-filler" />
             <div className="pagination-panel__page-list">
                 {pages <= 3 ? (
                     pageNumbers.map(page => (
