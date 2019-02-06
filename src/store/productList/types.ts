@@ -6,6 +6,7 @@ export interface Product {
     oldPrice?: number;
     isNew: boolean;
     isHit: boolean;
+    isWeight: boolean;
     category: string;
     kind: string;
     flavor: string;
