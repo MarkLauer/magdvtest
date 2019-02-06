@@ -2,7 +2,8 @@
 
 .main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 64px;
 
   @include md {
@@ -16,6 +17,23 @@
 
     @include md {
       padding: 1em;
+    }
+  }
+
+  &__breadcrumbs {
+    display: none;
+
+    @include md {
+      display: block;
+      width: 100%;
+      max-width: $breakpoint-xl;
+      padding: 16px 16px 0;
+      font-size: 14px;
+    }
+
+    &_icon {
+      color: $color-grey;
+      margin: 0 4px;
     }
   }
 }
