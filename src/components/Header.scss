@@ -6,6 +6,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
 
   @include md {
     position: static;
@@ -366,6 +367,7 @@
         position: fixed;
         height: 64px;
         width: calc(100% - 2em);
+        z-index: 1;
       }
 
       @include lg {
