@@ -30,11 +30,15 @@
       &-arrow {
         color: $color-grey;
       }
-    }
-  }
 
-  &__select-wrapper {
-    position: relative;
+      &-sm {
+        display: none;
+
+        @include sm {
+          display: inline-block;
+        }
+      }
+    }
   }
 
   &__select {
@@ -44,6 +48,21 @@
     height: 100%;
     border: 1px solid $color-border;
     padding-right: 2em;
+
+    &-wrapper {
+      position: relative;
+    }
+
+    &-caption {
+      display: none;
+
+      @include md {
+        display: inline;
+        padding-right: 1em;
+        font-size: 12px;
+        color: $color-grey;
+      }
+    }
 
     &-arrow {
       position: absolute;
@@ -63,5 +82,22 @@
 
   &__flex-filler {
     margin: auto;
+  }
+
+  &__view-icons-container {
+    display: flex;
+    align-items: center;
+    padding-left: 4em;
+  }
+
+  &__view-icon {
+    padding-left: 1em;
+    font-size: 18px;
+    color: $color-grey;
+    cursor: pointer;
+
+    &_active {
+      color: $color-primary;
+    }
   }
 }

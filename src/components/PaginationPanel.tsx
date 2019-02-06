@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Order, Sort, View } from './ProductList';
+import {Order, Sort, View} from './ProductList';
 import './PaginationPanel.scss';
 
 interface Props {
@@ -12,6 +12,7 @@ interface Props {
     onPageChange: (page: number) => void;
     onSelectChange: (event: React.FormEvent<HTMLSelectElement>) => void;
     onOrderChange: () => void;
+    onViewChange: (view: View) => void;
 }
 
 const PaginationPanel = ({
@@ -23,7 +24,8 @@ const PaginationPanel = ({
     view,
     onPageChange,
     onSelectChange,
-    onOrderChange
+    onOrderChange,
+    onViewChange
 }: Props) => {
     const pageNumbers: number[] = [];
     for (let i = 1; i <= pages; i++) {
@@ -32,6 +34,9 @@ const PaginationPanel = ({
     return (
         <div className="pagination-panel">
             <div className="pagination-panel__select-wrapper">
+                <span className="pagination-panel__select-caption">
+                    Порядок
+                </span>
                 <select
                     value={sort}
                     name="sort"
@@ -54,6 +59,7 @@ const PaginationPanel = ({
                 )}
             </button>
             <div className="pagination-panel__select-wrapper">
+                <span className="pagination-panel__select-caption">Кол-во</span>
                 <select
                     value={productsPerPage}
                     name="productsPerPage"
@@ -63,64 +69,107 @@ const PaginationPanel = ({
                     <option value="3">3</option>
                     <option value="6">6</option>
                     <option value="12">12</option>
+                    <option value="24">24</option>
                 </select>
                 <i className="fas fa-angle-down pagination-panel__select-arrow" />
             </div>
             <div className="pagination-panel__flex-filler" />
             <div className="pagination-panel__page-list">
-                {currentPage > 2 && pages > 3 && (
-                    <button
-                        className="pagination-panel__page-list-button pagination-panel__page-list-button-arrow"
-                        onClick={() => onPageChange(currentPage - 1)}
-                    >
-                        <i className="fas fa-angle-left" />
-                    </button>
+                {pages <= 3 ? (
+                    pageNumbers.map(page => (
+                        <button
+                            key={page}
+                            className={`pagination-panel__page-list-button${
+                                page === currentPage
+                                    ? ' pagination-panel__page-list-button_current'
+                                    : ''
+                            }`}
+                            onClick={() => onPageChange(page)}
+                        >
+                            {page}
+                        </button>
+                    ))
+                ) : (
+                    <React.Fragment>
+                        <button
+                            className={`pagination-panel__page-list-button${
+                                currentPage === 1
+                                    ? ' pagination-panel__page-list-button_current'
+                                    : ''
+                            }`}
+                            onClick={() => {
+                                if (currentPage > 1) {
+                                    onPageChange(currentPage - 1);
+                                }
+                            }}
+                        >
+                            {currentPage > 2 ? (
+                                <i className="fas fa-angle-left" />
+                            ) : (
+                                1
+                            )}
+                        </button>
+                        <button
+                            className={`pagination-panel__page-list-button${
+                                currentPage > 1 &&
+                                currentPage < pageNumbers[pages - 1]
+                                    ? ' pagination-panel__page-list-button_current'
+                                    : ''
+                            }`}
+                            onClick={() => {
+                                if (currentPage === 1) {
+                                    onPageChange(currentPage + 1);
+                                } else if (
+                                    currentPage === pageNumbers[pages - 1]
+                                ) {
+                                    onPageChange(currentPage - 1);
+                                }
+                            }}
+                        >
+                            {currentPage === 1
+                                ? currentPage + 1
+                                : currentPage === pageNumbers[pages - 1]
+                                ? currentPage - 1
+                                : currentPage}
+                        </button>
+                        <button
+                            className={`pagination-panel__page-list-button${
+                                currentPage === pageNumbers[pages - 1]
+                                    ? ' pagination-panel__page-list-button_current'
+                                    : ''
+                            }`}
+                            onClick={() => {
+                                if (currentPage < pageNumbers[pages - 1]) {
+                                    onPageChange(currentPage + 1);
+                                }
+                            }}
+                        >
+                            {currentPage < pageNumbers[pages - 2] ? (
+                                <i className="fas fa-angle-right" />
+                            ) : (
+                                pageNumbers[pages - 1]
+                            )}
+                        </button>
+                    </React.Fragment>
                 )}
-                {(currentPage === 2 || (pages === 3 && currentPage !== 1)) && (
-                    <button
-                        className="pagination-panel__page-list-button"
-                        onClick={() => onPageChange(1)}
-                    >
-                        1
-                    </button>
-                )}
-                {currentPage === pageNumbers[pages - 1] && pages > 2 && (
-                    <button
-                        className="pagination-panel__page-list-button"
-                        onClick={() => onPageChange(pageNumbers[pages - 2])}
-                    >
-                        {pageNumbers[pages - 2]}
-                    </button>
-                )}
-                <button className="pagination-panel__page-list-button pagination-panel__page-list-button_current">
-                    {currentPage}
-                </button>
-                {currentPage === 1 && pages >= 2 && (
-                    <button
-                        className="pagination-panel__page-list-button"
-                        onClick={() => onPageChange(2)}
-                    >
-                        2
-                    </button>
-                )}
-                {((currentPage === pageNumbers[pages - 2] && pages > 2) ||
-                    (pages === 3 &&
-                        currentPage !== pageNumbers[pages - 1])) && (
-                    <button
-                        className="pagination-panel__page-list-button"
-                        onClick={() => onPageChange(pageNumbers[pages - 1])}
-                    >
-                        {pageNumbers[pages - 1]}
-                    </button>
-                )}
-                {currentPage < pageNumbers[pages - 2] && pages > 3 && (
-                    <button
-                        className="pagination-panel__page-list-button pagination-panel__page-list-button-arrow"
-                        onClick={() => onPageChange(currentPage + 1)}
-                    >
-                        <i className="fas fa-angle-right" />
-                    </button>
-                )}
+            </div>
+            <div className="pagination-panel__view-icons-container">
+                <i
+                    className={`fas fa-th-large pagination-panel__view-icon${
+                        view === View.Tile
+                            ? ' pagination-panel__view-icon_active'
+                            : ''
+                    }`}
+                    onClick={() => onViewChange(View.Tile)}
+                />
+                <i
+                    className={`fas fa-bars pagination-panel__view-icon${
+                        view === View.List
+                            ? ' pagination-panel__view-icon_active'
+                            : ''
+                    }`}
+                    onClick={() => onViewChange(View.List)}
+                />
             </div>
         </div>
     );

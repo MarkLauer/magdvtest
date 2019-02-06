@@ -51,6 +51,10 @@ class ProductList extends React.Component<Props> {
         }
     };
 
+    handleViewChange = (view: View) => {
+        this.setState({ view });
+    };
+
     render(): React.ReactNode {
         const { products } = this.props;
         const { currentPage, productsPerPage, sort, order, view } = this.state;
@@ -86,6 +90,7 @@ class ProductList extends React.Component<Props> {
                 onPageChange={this.handlePageChange}
                 onSelectChange={this.handleSelectChange}
                 onOrderChange={this.handleOrderChange}
+                onViewChange={this.handleViewChange}
             />
         );
 
