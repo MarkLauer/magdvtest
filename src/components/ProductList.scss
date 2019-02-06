@@ -24,6 +24,11 @@
     font-weight: bold;
     cursor: pointer;
 
+    &:hover {
+      color: $color-white;
+      background-color: $color-primary;
+    }
+
     @include md {
       width: 100%;
       margin: 16px 0;
