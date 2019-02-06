@@ -1,0 +1,57 @@
+@import "variables";
+
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), url("../images/footer-background.png");
+
+  &__content {
+    position: relative;
+    width: 100%;
+    padding: 16px;
+    font-size: 14px;
+
+    @include md {
+      display: none;
+    }
+  }
+
+  &__content-md {
+    display: none;
+    
+    @include md {
+      display: flex;
+      position: relative;
+      width: 100%;
+      max-width: $breakpoint-xl;
+      padding: 16px;
+      font-size: 12px;
+
+      &-row {
+        flex: 1 1 25%;
+        padding: 24px 0;
+      }
+    }
+  }
+
+  &__line {
+    margin: 0 0 4px 0;
+  }
+
+  &__link {
+    display: block;
+    color: inherit;
+    margin-bottom: 4px;
+    text-decoration: none;
+  }
+
+  &__copyright {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    color: $color-grey;
+    font-size: 12px;
+  }
+}
