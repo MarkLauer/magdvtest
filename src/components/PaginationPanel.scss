@@ -85,9 +85,13 @@
   }
 
   &__view-icons-container {
-    display: flex;
-    align-items: center;
-    padding-left: 4em;
+    display: none;
+
+    @include md {
+      display: flex;
+      align-items: center;
+      padding-left: 4em;
+    }
   }
 
   &__view-icon {
