@@ -2,6 +2,7 @@ import * as React from 'react';
 import './Header.scss';
 // @ts-ignore
 import magOnlineLogo from '../images/logo_magonline.png';
+import { formatPrice } from '../utils';
 
 interface Props {
     cartAmount: number;
@@ -142,11 +143,7 @@ class Header extends React.Component<Props> {
                                     : 'Корзина пока пуста'}
                             </span>
                             <span className="header__main-bottom-cart-value">
-                                {cartTotal > 0 &&
-                                    cartTotal
-                                        .toFixed(2)
-                                        .replace(/\d(?=(\d{3})+\.)/g, '$& ') +
-                                        ' ₽'}
+                                {cartTotal > 0 && formatPrice(cartTotal)}
                                 {cartAmount > 0 && sticky && (
                                     <span className="header__main-bottom-cart-amount header__cart-amount">
                                         {cartAmount}
