@@ -81,7 +81,7 @@
         height: auto;
       }
 
-      &-menu-icon {
+      &-icon {
         display: flex;
         align-items: center;
         padding: 0 16px;
@@ -190,7 +190,6 @@
               padding-right: .5em;
             }
           }
-
         }
 
         &-button {
@@ -217,6 +216,22 @@
       &_sticky {
         @include md {
           display: none;
+        }
+      }
+
+      &-cart-sm {
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        @include md {
+          display: none;
+        }
+
+        &-amount {
+          position: absolute;
+          top: 1em;
+          right: 1em;
         }
       }
     }
@@ -381,6 +396,7 @@
     padding: 0 .5em;
     font-size: 11px;
     font-weight: normal;
+    color: $color-white;
     background-color: $color-primary;
     border-radius: 6px;
   }

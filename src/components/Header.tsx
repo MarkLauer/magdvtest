@@ -58,7 +58,7 @@ class Header extends React.Component<Props> {
                             sticky ? ' header__main-top_sticky' : ''
                         }`}
                     >
-                        <i className="fas fa-bars header__main-top-menu-icon" />
+                        <i className="fas fa-bars header__main-top-icon" />
                         <div className="header__main-top-logo" />
                         <div className="header__main-top-info">
                             <a href="" className="header__main-top-info-link">
@@ -92,6 +92,16 @@ class Header extends React.Component<Props> {
                                 )}
                             </span>
                             <i className="fas fa-chevron-circle-down header__main-top-cart-button" />
+                        </div>
+                        <i className="fas fa-search header__main-top-icon" />
+                        <i className="fas fa-th-large header__main-top-icon" />
+                        <div className="header__main-top-cart-sm">
+                            <i className="fas fa-shopping-basket header__main-top-icon" />
+                            {cartAmount > 0 && (
+                                <span className="header__main-top-cart-sm-amount header__cart-amount">
+                                    {cartAmount}
+                                </span>
+                            )}
                         </div>
                     </div>
                     <div className="header__main-bottom">
