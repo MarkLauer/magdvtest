@@ -21,6 +21,7 @@ export enum View {
 
 interface Props {
     products: Product[];
+    onFilterVisibleChange: () => void;
 }
 
 class ProductList extends React.Component<Props> {
@@ -56,7 +57,7 @@ class ProductList extends React.Component<Props> {
     };
 
     render(): React.ReactNode {
-        const { products } = this.props;
+        const { products, onFilterVisibleChange } = this.props;
         const { currentPage, productsPerPage, sort, order, view } = this.state;
 
         const sortedProducts = products.sort((a, b) => {
@@ -104,6 +105,7 @@ class ProductList extends React.Component<Props> {
                             ? ' product-list__filter-button_tile'
                             : ''
                     }`}
+                    onClick={() => onFilterVisibleChange()}
                 >
                     Фильтр
                 </button>

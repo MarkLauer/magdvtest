@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Filter.scss';
 
 interface Props {
     categories: { [category: string]: number };
@@ -7,6 +8,7 @@ interface Props {
     onCategoryChange: (category: string) => any;
     onKindChange: (kind: string) => any;
     onFlavorChange: (flavor: string) => any;
+    visible: boolean;
 }
 
 const Filter = ({
@@ -15,37 +17,55 @@ const Filter = ({
     flavors,
     onCategoryChange,
     onKindChange,
-    onFlavorChange
+    onFlavorChange,
+    visible
 }: Props) => (
-    <div>
-        <p>Категория</p>
-        {Object.keys(categories).map(category => (
-            <p key={category}>
-                <input
-                    type="checkbox"
-                    onChange={() => onCategoryChange(category)}
-                />
-                <span>{category}</span>{' '}
-                <span>{categories[category]}</span>
-            </p>
-        ))}
-        <p>Вид</p>
-        {kinds.map((kind: string) => (
-            <p key={kind}>
-                <input type="checkbox" onChange={() => onKindChange(kind)} />
-                <span>{kind}</span>
-            </p>
-        ))}
-        <p>Вкус</p>
-        {flavors.map((flavor: string) => (
-            <p key={flavor}>
-                <input
-                    type="checkbox"
-                    onChange={() => onFlavorChange(flavor)}
-                />
-                <span>{flavor}</span>
-            </p>
-        ))}
+    <div
+        className={`filter${visible ? ' filter_fixed' : ''}`}
+        onClick={event => event.stopPropagation()}
+    >
+        <h4>Категория</h4>
+        <ul className="filter-list">
+            {Object.keys(categories).map(category => (
+                <li key={category} className="filter-list-item">
+                    <input
+                        className="filter-checkbox"
+                        type="checkbox"
+                        onChange={() => onCategoryChange(category)}
+                    />
+                    <span>{category}</span>{' '}
+                    <span className="filter-amount">
+                        {categories[category]}
+                    </span>
+                </li>
+            ))}
+        </ul>
+        <h4>Вид</h4>
+        <ul className="filter-list">
+            {kinds.map((kind: string) => (
+                <li key={kind} className="filter-list-item">
+                    <input
+                        className="filter-checkbox"
+                        type="checkbox"
+                        onChange={() => onKindChange(kind)}
+                    />
+                    <span>{kind}</span>
+                </li>
+            ))}
+        </ul>
+        <h4>Вкус</h4>
+        <ul className="filter-list">
+            {flavors.map((flavor: string) => (
+                <li key={flavor} className="filter-list-item">
+                    <input
+                        className="filter-checkbox"
+                        type="checkbox"
+                        onChange={() => onFlavorChange(flavor)}
+                    />
+                    <span>{flavor}</span>
+                </li>
+            ))}
+        </ul>
     </div>
 );
 

@@ -13,6 +13,7 @@ import ProductList from '../components/ProductList';
 interface Props {
     products: Product[];
     dispatch: ThunkDispatch<{}, {}, any>;
+    onFilterVisibleChange: () => void;
 }
 
 class ProductListContainer extends React.Component<Props> {
@@ -22,8 +23,8 @@ class ProductListContainer extends React.Component<Props> {
     }
 
     render(): React.ReactNode {
-        const { products } = this.props;
-        return <ProductList products={products} />;
+        const { dispatch, ...rest } = this.props;
+        return <ProductList {...rest} />;
     }
 }
 

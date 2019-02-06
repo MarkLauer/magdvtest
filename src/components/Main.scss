@@ -6,6 +6,23 @@
   align-items: center;
   margin-top: 64px;
 
+  &_obscured {
+    &:before {
+      content: '';
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+
+      @include lg {
+        display: none;
+      }
+    }
+  }
+
   @include md {
     margin-top: 0;
   }
@@ -16,7 +33,8 @@
     max-width: $breakpoint-xl;
 
     @include md {
-      padding: 1em;
+      padding: 16px;
+      align-items: flex-start;
     }
   }
 
