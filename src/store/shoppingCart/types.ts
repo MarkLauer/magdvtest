@@ -4,6 +4,7 @@ export interface ShoppingCartState {
 
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const SET_PRODUCT_AMOUNT = 'SET_PRODUCT_AMOUNT';
 
 interface AddToCartAction {
     type: typeof ADD_TO_CART;
@@ -15,4 +16,13 @@ interface RemoveFromCartAction {
     productId: number;
 }
 
-export type ShoppingCartActionTypes = AddToCartAction | RemoveFromCartAction;
+interface SetProductAmountAction {
+    type: typeof SET_PRODUCT_AMOUNT;
+    productId: number;
+    amount: number;
+}
+
+export type ShoppingCartActionTypes =
+    | AddToCartAction
+    | RemoveFromCartAction
+    | SetProductAmountAction;

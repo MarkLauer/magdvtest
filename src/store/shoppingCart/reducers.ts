@@ -2,7 +2,8 @@ import {
     ShoppingCartState,
     ShoppingCartActionTypes,
     ADD_TO_CART,
-    REMOVE_FROM_CART
+    REMOVE_FROM_CART,
+    SET_PRODUCT_AMOUNT
 } from './types';
 
 const initialState: ShoppingCartState = {};
@@ -32,6 +33,11 @@ export const shoppingCartReducer = (
             }
             const { [action.productId]: value, ...rest } = state;
             return rest;
+        case SET_PRODUCT_AMOUNT:
+            return {
+                ...state,
+                [action.productId]: action.amount
+            };
         default:
             return state;
     }
