@@ -24,7 +24,7 @@
     font-weight: bold;
     cursor: pointer;
 
-    @include md {
+    @include lg {
       display: none;
     }
   }
