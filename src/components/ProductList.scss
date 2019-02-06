@@ -24,6 +24,11 @@
     font-weight: bold;
     cursor: pointer;
 
+    @include md {
+      width: 100%;
+      margin: 16px 0;
+    }
+
     @include lg {
       display: none;
     }
