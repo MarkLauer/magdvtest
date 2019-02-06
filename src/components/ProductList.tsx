@@ -39,15 +39,15 @@ class ProductList extends React.Component<Props> {
     handleSelectChange = ({
         currentTarget: { name, value }
     }: React.FormEvent<HTMLSelectElement>) => {
-        this.setState({ [name]: value });
+        this.setState({ [name]: value, currentPage: 1 });
     };
 
     handleOrderChange = () => {
         const { order } = this.state;
         if (order === Order.Ascend) {
-            this.setState({ order: Order.Descend });
+            this.setState({ order: Order.Descend, currentPage: 1 });
         } else {
-            this.setState({ order: Order.Ascend });
+            this.setState({ order: Order.Ascend, currentPage: 1 });
         }
     };
 
@@ -98,9 +98,15 @@ class ProductList extends React.Component<Props> {
             <div className="product-list">
                 <div className="product-list__header">Вафли</div>
                 {paginationPanel}
-                {currentProducts.map(product => (
-                    <ProductCardContainer key={product.id} product={product} />
-                ))}
+                <button className="product-list__filter-button">Фильтр</button>
+                <div>
+                    {currentProducts.map(product => (
+                        <ProductCardContainer
+                            key={product.id}
+                            product={product}
+                        />
+                    ))}
+                </div>
                 {paginationPanel}
             </div>
         );
