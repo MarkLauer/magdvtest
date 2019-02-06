@@ -1,0 +1,17 @@
+@import "breakpoints";
+@import "colors";
+
+.product-list {
+  width: 100%;
+  
+  @include lg {
+    flex: 3 1 75%;
+  }
+
+  &__header {
+    padding: 16px 16px 0;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: $color-white;
+  }
+}
